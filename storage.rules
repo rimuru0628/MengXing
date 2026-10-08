@@ -1,0 +1,47 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ─── Helper functions ─────────────────────────────────────────────────
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isImageFile() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isUnderSizeLimit(maxMB) {
+      return request.resource.size <= maxMB * 1024 * 1024;
+    }
+
+    // ─── User avatars ──────────────────────────────────────────────────────
+    match /avatars/{userId}/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId)
+        && isImageFile()
+        && isUnderSizeLimit(5); // max 5 MB
+    }
+
+    // ─── GPS route snapshots ───────────────────────────────────────────────
+    match /routes/{userId}/{routeId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId) && isUnderSizeLimit(1);
+    }
+
+    // ─── Exercise media (public read, admin write) ─────────────────────────
+    match /exercises/{path=**} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Managed via Firebase Admin SDK
+    }
+
+    // ─── Default deny ─────────────────────────────────────────────────────
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

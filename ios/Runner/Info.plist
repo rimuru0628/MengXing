@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>MengXing 梦行</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>mengxing</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+
+	<!-- ─── HealthKit permissions ─────────────────────────────── -->
+	<key>NSHealthShareUsageDescription</key>
+	<string>MengXing reads your steps, walking distance, and active minutes to track your daily activity goals and walking sessions.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>MengXing writes workout data to HealthKit to keep your health records up to date.</string>
+
+	<!-- ─── Location permission ──────────────────────────────── -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>MengXing uses your location to track your walking route when you choose to enable GPS during a walk. Location is never used without your explicit permission.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>MengXing may use background location during an active GPS walk session to accurately record your route.</string>
+
+	<!-- ─── Motion & Fitness ─────────────────────────────────── -->
+	<key>NSMotionUsageDescription</key>
+	<string>MengXing accesses your device motion sensors to count your steps and detect walking activity automatically.</string>
+
+	<!-- ─── Camera (profile photo) ───────────────────────────── -->
+	<key>NSCameraUsageDescription</key>
+	<string>MengXing uses your camera to let you set a profile photo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>MengXing accesses your photo library so you can choose a profile photo.</string>
+
+	<!-- ─── HealthKit capability ─────────────────────────────── -->
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+
+	<!-- ─── Background modes ─────────────────────────────────── -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>location</string>
+		<string>processing</string>
+	</array>
+
+	<!-- ─── App Transport Security ───────────────────────────── -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+	</dict>
+
+	<!-- ─── Google Maps SDK key (replace with your key) ──────── -->
+	<key>GMSApiKey</key>
+	<string>YOUR_GOOGLE_MAPS_API_KEY</string>
+</dict>
+</plist>

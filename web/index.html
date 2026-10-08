@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="MengXing 梦行 - Daily Exercise & Walking Tracker">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MengXing">
+  <meta name="theme-color" content="#1A0A2E">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>MengXing 梦行</title>
+
+  <!-- Firebase SDK for Google Sign-In on web -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      background-color: #1A0A2E;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    /* Loading screen shown before Flutter boots */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #1A0A2E;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    #loading-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loading-logo {
+      font-size: 56px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #7DE8FF, #FF6EB4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 6px;
+      margin-bottom: 8px;
+    }
+    .loading-sub {
+      color: rgba(255,110,180,0.7);
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .loading-dots {
+      display: flex;
+      gap: 10px;
+    }
+    .loading-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: bounce 1.2s infinite ease-in-out;
+    }
+    .loading-dots span:nth-child(1) { background: #B44FD8; animation-delay: 0s; }
+    .loading-dots span:nth-child(2) { background: #FF6EB4; animation-delay: 0.2s; }
+    .loading-dots span:nth-child(3) { background: #7DE8FF; animation-delay: 0.4s; }
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+      40% { transform: scale(1.2); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom loading screen -->
+  <div id="loading-screen">
+    <div class="loading-logo">梦行</div>
+    <div class="loading-sub">MengXing · Fitness Tracker</div>
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <script>
+    // Remove loading screen once Flutter is ready
+    window.addEventListener('flutter-first-frame', function() {
+      var el = document.getElementById('loading-screen');
+      if (el) {
+        el.classList.add('fade-out');
+        setTimeout(function() { el.remove(); }, 500);
+      }
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
